@@ -25,10 +25,10 @@ See tests.mac for usage detailed usage examples
 
 ### Usage - Top Level Object (TLO)
 Properties:
-* Active - Is the plugin active or not? (Currently returns TRUE or NULL)
-* MapSize - Returns the size of the collection holding all the lists, essentially the number of Lists created
-* ListSize[PlayersToBuff] - Returns the Number of Elements in the List PlayersToBuff
-* ListPushFront[PlayersToBuff,JeffTheTank] - Returns true if successfully pushes the item to the list (front)
-* ListPushBack[PlayersToBuff,JeffTheTank] - Returns true if successfully pushes the item to the list (back)
-* ListPopFront[PlayersToBuff,JeffTheTank] - Returns the string item popped from the front of the list (NULL otherwise)
-* ListPopBack[PlayersToBuff,JeffTheTank] - Returns the string item popped from the back of the list (NULL otherwise)
+* ${List.Active} - Is the plugin active or not? (Currently returns TRUE or NULL)
+* ${MapSize} - Returns the size of the collection holding all the lists, essentially the number of Lists created
+* ${ListSize[PlayersToBuff]} - Returns the Number of Elements in the List PlayersToBuff
+* ${ListPushFront[PlayersToBuff,JeffTheTank]} - Returns true if successfully pushes the item to the list (front)
+* ${ListPushBack[PlayersToBuff,JeffTheTank]} - Returns true if successfully pushes the item to the list (back)
+* ${ListPopFront[PlayersToBuff,JeffTheTank]} - Returns the string item popped from the front of the list (NULL otherwise)
+* ${ListPopBack[PlayersToBuff,JeffTheTank]} - Returns the string item popped from the back of the list (NULL otherwise)
