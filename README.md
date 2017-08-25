@@ -14,11 +14,12 @@ See tests.mac for usage detailed usage examples
 /clist clear PlayersToBuff
 -Clears all items from the list PlayersToBuff (Empties the list)
 
-/clist pushf|pushb|popf|popb PlayersToBuff JeffTheTank
+/clist pushf | pushb | popf | popb PlayersToBuff JeffTheTank
 -pushf will push the item to the front of the list
 -pushb will push the item to the back of the list
 -popf will pop the item off the front of the list (no return value is given, see TLO for how to get the item popped)
 -popb will pop the item off the back of the list (no return value is given, see TLO for how to get the item popped)
+-Example: /clist pushf PlayersToBuff JeffTheTank (pushes JeffTheTank to the front of PlayersToBuff list)
 
 /clist remove PlayersToBuff JeffTheTank
 -Removes JeffTheTank from the PlayersToBuff list
