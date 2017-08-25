@@ -52,4 +52,5 @@ Below are a list of improvements I personally intend to make or would like to se
 * Add the ability to retrieve items from lists based off an index
 * Add the ability to list out all Lists in the global map
 * Do a better job with casting/converting/handling C/C++ strings etc. If you look at the source you'll see what I mean, it's just odd going from strcpy and string and so forth. I'm new to C/C++ so be gentle!
+* Review the logging/debugging output that I've put all throughout the macro. I think most of it can be removed/cleaned up or just use some basic debug variable to control output to EQ MQ2 window
 * Lots more!
