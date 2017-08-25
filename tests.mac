@@ -1,0 +1,163 @@
+Sub Main
+	/echo =================TESTS STARTED=================
+	/call Test_Startup
+
+	/call Test_CreateList
+	/call Test_DeleteList
+	/call Test_PushFAndPopF
+	/call Test_PushFAndPopFInline
+	/call Test_PushBAndPopB
+	/call Test_PushBAndPopBInline
+	/call Test_ClearList
+	/call Test_ResetMap
+
+	/call Test_TearDown
+	/echo ALL TESTS PASSED SUCCESSFULLY
+	/echo =================TESTS ENDED=================	
+/return
+
+Sub ExampleUsage
+
+	/clist create PlayersToBuff
+	/clist pushf PlayersToBuff Player1
+	/clist pushf PlayersToBuff Player2
+	/clist pushf PlayersToBuff Player3		
+
+
+/return
+
+Sub Test_Startup
+	/echo Test Startup Loading Plugin
+	/if ( ${List.Active}) /plugin BS2List unload
+	/squelch /plugin BS2List
+/return
+
+Sub Test_TearDown
+	/echo Test Shutdown, unloading plugin
+	/plugin BS2List unload
+/return
+
+Sub Test_CreateList
+	/if ( ${List.MapSize} == 0 ) {
+		/echo PASS: No List Yet Created, Map should be Empty
+	} else {
+		/call Failure "FAILURE: MapSize was not equal to zero as expected!" ${List.MapSize}
+	}
+
+	/clist create lista
+	/if ( ${List.MapSize} == 1 ) {
+		/echo PASS: Create 1 new list, MapSize should equal 1
+	} else {
+		/call Failure "FAILURE: MapSize was not equal to 1 as expected!" ${List.MapSize}
+	}
+
+	/clist create lista
+	/if ( ${List.MapSize} == 1 ) {
+		/echo PASS: Create existing list, MapSize should equal 1
+	} else {
+		/call Failure "FAILURE: MapSize was not equal to 1 as expected!" ${List.MapSize}
+	}
+
+	/clist create listA
+	/if ( ${List.MapSize} == 1 ) {
+		/echo PASS: List Name Case Sensitivity, MapSize should equal 1
+	} else {
+		/call Failure "FAILURE: MapSize was not equal to 1 as expected!" ${List.MapSize}
+	}	
+/return
+
+Sub Test_DeleteList
+	/clist delete LISTa
+	/if ( ${List.MapSize} == 0 ) {
+		/echo PASS: Delete Only Existing List, Map should be Empty
+	} else {
+		/call Failure "FAILURE: MapSize was not equal to zero as expected!" ${List.MapSize}
+	}
+
+	/clist delete asdf
+	/if ( ${List.MapSize} == 0 ) {
+		/echo PASS: Delete List that doesn't Exist, Map should be Empty
+	} else {
+		/call Failure "FAILURE: MapSize was not equal to zero as expected!" ${List.MapSize}
+	}		
+/return
+
+Sub Test_PushFAndPopF
+	/clist create listd
+	/clist pushf listd second
+	/clist pushf listd first
+	/declare FirstItem string local ${List.ListPopFront[listd]}
+	/if (${FirstItem.Equal[first]}) {
+		/echo PASS: First item in List should be first
+	} else {
+		/call Failure "FAILURE: First item in the list was not equal to first as expected!" ${List.MapSize}
+	}
+	/clist delete listd
+/return
+
+Sub Test_PushFAndPopFInline
+	/clist create listd
+	/echo ${List.ListPushFront[listd,second]}
+	/echo ${List.ListPushFront[listd,first]}
+	/declare FirstItem string local ${List.ListPopFront[listd]}
+	/if (${FirstItem.Equal[first]}) {
+		/echo PASS: First item in List should be first
+	} else {
+		/call Failure "FAILURE: First item in the list was not equal to first as expected!" ${List.MapSize}
+	}
+	/clist delete listd
+/return
+
+Sub Test_PushBAndPopB
+	/clist create listd
+	/clist pushb listd second
+	/clist pushb listd first
+	/declare FirstItem string local ${List.ListPopBack[listd]}
+	/if (${FirstItem.Equal[first]}) {
+		/echo PASS: Last item in List should be first
+	} else {
+		/call Failure "FAILURE: Last item in the list was not equal to first as expected!" ${List.MapSize}
+	}
+	/clist delete listd
+/return
+
+Sub Test_PushBAndPopBInline
+	/clist create listd
+	/echo ${List.ListPushBack[listd,second]}
+	/echo ${List.ListPushBack[listd,first]}
+	/declare FirstItem string local ${List.ListPopBack[listd]}
+	/if (${FirstItem.Equal[first]}) {
+		/echo PASS: Last item in List should be first
+	} else {
+		/call Failure "FAILURE: Last item in the list was not equal to first as expected!" ${List.MapSize}
+	}
+	/clist delete listd
+/return
+
+Sub Test_ClearList
+	/clist create listd
+	/clist pushb listd second
+	/clist pushb listd first
+	/clist clear listd
+	/if (${List.ListSize[listd]} == 0) {
+		/echo PASS: ListSize should equal 0 after I clear it
+	} else {
+		/call Failure "FAILURE: ListSize not 0" ${List.ListSize[listd]}
+	}
+	/clist delete listd
+/return
+
+Sub Test_ResetMap
+	/clist create lista
+	/clist reset
+	/if ( ${List.MapSize} == 0 ) {
+		/echo PASS: Reset Map, MapSize should equal 0
+	} else {
+		/call Failure "FAILURE: MapSize was not equal to 0 as expected!"=${List.MapSize}
+	}
+/return
+
+Sub Failure(pMessage)
+	/echo ${pMessage}
+	/endmacro
+/return
