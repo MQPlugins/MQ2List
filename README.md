@@ -14,6 +14,10 @@ See tests.mac for usage detailed usage examples
 /clist clear PlayersToBuff
 -Clears all items from the list PlayersToBuff (Empties the list)
 
+/client reset
+-Clears all Lists from the global map
+
+
 /clist pushf | pushb | popf | popb PlayersToBuff JeffTheTank
 -pushf will push the item to the front of the list
 -pushb will push the item to the back of the list
@@ -33,3 +37,6 @@ Properties:
 * ${ListPushBack[PlayersToBuff,JeffTheTank]} - Returns true if successfully pushes the item to the list (back)
 * ${ListPopFront[PlayersToBuff,JeffTheTank]} - Returns the string item popped from the front of the list (NULL otherwise)
 * ${ListPopBack[PlayersToBuff,JeffTheTank]} - Returns the string item popped from the back of the list (NULL otherwise)
+
+### Some Internal Notes
+The Plugin has a global Map that holds all of the Lists you create/delete/edit. Given the global nature of this variable, it will PERSIST through macros. This could be a good thing, it could be a bad thing, I don't really know. Ultimately just know this and be smart about it. You can easily control how this works though, if you want a fresh list for each time you start a macro simply call the /clist reset at the top of macros accordingly.
