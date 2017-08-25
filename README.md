@@ -6,10 +6,10 @@ A plugin for MacroQuest 2 that wraps the C++ List type
 See tests.mac for usage detailed usage examples
 
 /clist create PlayersToBuff
--Creates a list named PlayersToBuff
+-Creates a list named PlayersToBuff, if the list already exists IT WILL BE CLEARED
 
 /clist delete PlayersToBuff
--Deletes a lsit named PlayersToBuff (if it exists, does nothing if it does not exist)
+-Deletes a lsit named PlayersToBuff, if the list does NOT already exist nothing happens
 
 /clist clear PlayersToBuff
 -Clears all items from the list PlayersToBuff (Empties the list)
