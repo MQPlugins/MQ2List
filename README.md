@@ -1,6 +1,10 @@
 # MQ2List
 A plugin for MacroQuest 2 that wraps the C++ List type
 
+I was motivation to contribute to the MacroQuest community given I've been using it for years on and off. I wanted to be able to use a data type such as a List in a Macro but was unable to access it. This is my best attempt (with my limited understanding) to expose that data type to macros. 
+
+If there is a much easier way to expose popular data types, please let me know!
+
 ## Usage
 ### Command Line
 See tests.mac for usage detailed usage examples
@@ -40,3 +44,12 @@ Properties:
 
 ### Some Internal Notes
 The Plugin has a global Map that holds all of the Lists you create/delete/edit. Given the global nature of this variable, it will PERSIST through macros. This could be a good thing, it could be a bad thing, I don't really know. Ultimately just know this and be smart about it. You can easily control how this works though, if you want a fresh list for each time you start a macro simply call the /clist reset at the top of macros accordingly.
+
+## TODO LIST
+Below are a list of improvements I personally intend to make or would like to see others contribute. Please feel free to submit pull requests with any of your recommended updates as well and I'll be happy to include them!
+
+* Add the ability to iterate through the list in some manner. I think this would be somewhat challenging but NOT impossible. Within the Macro itself it may look a bit hacky but I think we can make it work!
+* Add the ability to retrieve items from lists based off an index
+* Add the ability to list out all Lists in the global map
+* Do a better job with casting/converting/handling C/C++ strings etc. If you look at the source you'll see what I mean, it's just odd going from strcpy and string and so forth. I'm new to C/C++ so be gentle!
+* Lots more!
