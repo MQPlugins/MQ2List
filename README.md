@@ -1,7 +1,7 @@
 # MQ2List
 A plugin for MacroQuest 2 that wraps the C++ List type
 
-I was motivation to contribute to the MacroQuest community given I've been using it for years on and off. I wanted to be able to use a data type such as a List in a Macro but was unable to access it. This is my best attempt (with my limited understanding) to expose that data type to macros. 
+I was motivated to contribute to the MacroQuest community given I've been using it for years on and off. I wanted to be able to use a data type such as a List in a Macro but was unable to access it. This is my best attempt (with my limited understanding) to expose that data type to macros. 
 
 If there is a much easier way to expose popular data types, please let me know!
 
